@@ -1,9 +1,9 @@
 # ESP32S3FTPServer
 ## Servidor FTP para ESP32-S3  
 
-![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)  
-![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg)  
-![Versão](https://img.shields.io/badge/vers%C3%A3o-1.0.0-green.svg)  
+![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-orange?style=plastic&logo=platformio)  
+![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg?style=plastic&logo=apache)  
+![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.0-green.svg?style=plastic&logo=github)  
 
 Um servidor FTP leve e eficiente para microcontroladores ESP32-S3 com suporte ao sistema de arquivos LittleFS.
 
