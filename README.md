@@ -1,7 +1,7 @@
 # ESP32S3FTPServer
 ## Servidor FTP para ESP32-S3  
 
-![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)
+![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)  
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg)  
 ![Versão](https://img.shields.io/badge/vers%C3%A3o-1.0.0-green.svg)  
 
@@ -93,6 +93,6 @@ Commit suas mudanças (git commit -m 'Adiciona nova funcionalidade')
 
 Push para a branch (git push origin feature/nova-funcionalidade)
 
-Abra um Pull Request
+Abra um Pull Request  
 ---
 Nota: Consulte o arquivo NOTICE para informações detalhadas sobre atribuições e modificações de código de terceiros.
