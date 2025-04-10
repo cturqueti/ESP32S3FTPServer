@@ -21,6 +21,7 @@ Um servidor FTP leve e eficiente para microcontroladores ESP32-S3 com suporte ao
 ```ini
 lib_deps = 
     https://github.com/seu-usuario/ESP32-S3-FTP-Server.git
+    https://github.com/cturqueti/LogLibrary.git
 ```
 
 ### Arduino IDE
