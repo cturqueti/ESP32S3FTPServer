@@ -3,7 +3,7 @@
 
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg)  
-![Versão](https://img.shields.io/badge/vers%C3%A3o-1.2.0-green.svg)  
+![Versão](https://img.shields.io/badge/vers%C3%A3o-1.0.0-green.svg)  
 
 Um servidor FTP leve e eficiente para microcontroladores ESP32-S3 com suporte ao sistema de arquivos LittleFS.
 
@@ -48,17 +48,19 @@ void loop() {
 ```
 
 ## ⚙️ Configurações Avançadas
-Método	Descrição	Padrão
-setActiveTimeout(min)	Timeout modo ativo	5 min
-setPassivePort(port)	Porta modo passivo	55600
-setMaxLoginAttempts(n)	Tentativas de login	3
+|Método	|Descrição	|Padrão |
+|---|---|---|
+|setActiveTimeout(min)	|Timeout modo ativo	|5 min |
+|setPassivePort(port)	|Porta modo passivo	|55600 |
+|setMaxLoginAttempts(n)	|Tentativas de login	|3 |
 
 ## 📌 Comandos Suportados
-Comando	Descrição
-LIST/MLSD	Listagem de arquivos
-STOR/RETR	Upload/Download
-MKD/RMD	Gerenciar diretórios
-RNFR/RNTO	Renomear arquivos
+|Comando	|Descrição |
+|---|---|
+|LIST/MLSD	|Listagem de arquivos |
+|STOR/RETR	|Upload/Download |
+|MKD/RMD	|Gerenciar diretórios |
+|RNFR/RNTO	|Renomear arquivos |
 
 ## 🐛 Depuração
 Ative em ESP32FtpServer.h:
@@ -68,7 +70,7 @@ Ative em ESP32FtpServer.h:
 ```
 
 ## 📜 Licença
-Copyright 2025 Seu Nome
+Copyright 2025 cturqueti
 
 Licenciado sob a Apache License, Versão 2.0 (a "Licença");
 você não pode usar este arquivo exceto em conformidade com a Licença.
