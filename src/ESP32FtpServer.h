@@ -17,7 +17,7 @@
 #include <LogLibrary.h>
 #endif
 
-#define FTP_SERVER_VERSION "1.2.0"
+#define FTP_SERVER_VERSION "1.0.0"
 
 // FTP Server Configuration
 #define FTP_CTRL_PORT 21
@@ -27,6 +27,10 @@
 #define FTP_CWD_SIZE 512
 #define FTP_FIL_SIZE 128
 #define FTP_BUF_SIZE 512
+
+#ifdef FTP_DEBUG
+extern LogLibrary Log;
+#endif
 
 // Debug options
 // #define FTP_DEBUG
