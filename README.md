@@ -94,5 +94,7 @@ Commit suas mudanças (git commit -m 'Adiciona nova funcionalidade')
 Push para a branch (git push origin feature/nova-funcionalidade)
 
 Abra um Pull Request  
+
+
 ---
 Nota: Consulte o arquivo NOTICE para informações detalhadas sobre atribuições e modificações de código de terceiros.
