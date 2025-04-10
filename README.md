@@ -3,7 +3,7 @@
 
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-orange?style=plastic&logo=platformio)  
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg?style=plastic&logo=apache)  
-![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.1-green.svg?style=plastic&logo=github)  
+![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.2-green.svg?style=plastic&logo=github)  
 
 Um servidor FTP leve e eficiente para microcontroladores ESP32-S3 com suporte ao sistema de arquivos LittleFS.
 

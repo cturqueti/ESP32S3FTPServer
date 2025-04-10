@@ -1,6 +1,6 @@
 {
   "name":"ESP32S3FTPServer",
-  "version":"1.0.1",
+  "version":"1.0.2",
   "description":"Simple FTP Server on SD Card for Espressiv ESP32-S3",
   "keywords":"ftp server, ftserver, LittleFS",
   "authors": [
@@ -13,7 +13,7 @@
   "frameworks": "arduino",
   "platforms": ["espressif32"],
   "dependencies": {
-    "LogLibrary": ">=1.0.1"
+    "LogLibrary": ">=1.0.2"
   },
   "repository":
   {

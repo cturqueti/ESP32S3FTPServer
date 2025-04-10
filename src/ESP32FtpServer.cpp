@@ -36,7 +36,8 @@ FtpServer::FtpServer() : _username(""),
                          _dataConnType(FTP_DATA_PASSIVE),
                          _rnfrCmd(false),
                          _bytesTransferred(0),
-                         _log(FTPLog::DISABLE)
+                         _log(FTPLog::DISABLE),
+                         _started(false)
 {
   strlcpy(_cwd, "/", sizeof(_cwd));
 }
@@ -54,6 +55,7 @@ void FtpServer::begin(const String &username, const String &password)
   ftpServer.begin();
   dataServer.begin();
   _cmdStatus = FTP_CMD_WAIT_CONNECTION;
+  _started = true;
 }
 
 void FtpServer::begin(const String &username, const String &password, FTPLog log)
@@ -75,6 +77,7 @@ void FtpServer::begin(const String &username, const String &password, FTPLog log
   ftpServer.begin();
   dataServer.begin();
   _cmdStatus = FTP_CMD_WAIT_CONNECTION;
+  _started = true;
 
   if (_log == FTPLog::ENABLE)
   {
@@ -99,6 +102,11 @@ void FtpServer::setMaxLoginAttempts(uint8_t attempts)
 
 bool FtpServer::handleFTP()
 {
+  if (!_started)
+  {
+    return false;
+  }
+
   if ((int32_t)(_millisDelay - millis()) > 0)
   {
     return false;

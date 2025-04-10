@@ -107,6 +107,7 @@ private:
   char _cwd[FTP_CWD_SIZE];
   char _renameFrom[FTP_CWD_SIZE];
   bool _rnfrCmd;
+  bool _started;
   FTPLog _log;
 
   // Buffers and timing
