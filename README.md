@@ -3,7 +3,7 @@
 
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-orange?style=plastic&logo=platformio)  
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-Apache%202.0-blue.svg?style=plastic&logo=apache)  
-![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.0-green.svg?style=plastic&logo=github)  
+![Versão](https://img.shields.io/badge/Vers%C3%A3o-1.0.1-green.svg?style=plastic&logo=github)  
 
 Um servidor FTP leve e eficiente para microcontroladores ESP32-S3 com suporte ao sistema de arquivos LittleFS.
 
@@ -64,10 +64,10 @@ void loop() {
 |RNFR/RNTO	|Renomear arquivos |
 
 ## 🐛 Depuração
-Ative em ESP32FtpServer.h:
+Inicie da seguinte forma:
 
 ```cpp
-#define FTP_DEBUG
+ftpSrv.begin("ftp_user", "ftp_pass", FtpServer::FTPLog::ENABLE);
 ```
 
 ## 📜 Licença

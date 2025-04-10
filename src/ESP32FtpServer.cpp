@@ -35,7 +35,8 @@ FtpServer::FtpServer() : _username(""),
                          _cmdStatus(FTP_CMD_IDLE),
                          _dataConnType(FTP_DATA_PASSIVE),
                          _rnfrCmd(false),
-                         _bytesTransferred(0)
+                         _bytesTransferred(0),
+                         _log(FTPLog::DISABLE)
 {
   strlcpy(_cwd, "/", sizeof(_cwd));
 }
@@ -47,9 +48,27 @@ void FtpServer::begin(const String &username, const String &password)
 
   if (!LittleFS.begin(true))
   {
-#ifdef FTP_DEBUG
-    LOG_INFO("Failed to mount LittleFS");
-#endif
+    return;
+  }
+
+  ftpServer.begin();
+  dataServer.begin();
+  _cmdStatus = FTP_CMD_WAIT_CONNECTION;
+}
+
+void FtpServer::begin(const String &username, const String &password, FTPLog log)
+{
+  _username = username;
+  _password = password;
+  _log = log;
+
+  if (!LittleFS.begin(true))
+  {
+    if (_log == FTPLog::ENABLE)
+    {
+      LOG_INFO("Failed to mount LittleFS");
+    }
+
     return;
   }
 
@@ -57,9 +76,10 @@ void FtpServer::begin(const String &username, const String &password)
   dataServer.begin();
   _cmdStatus = FTP_CMD_WAIT_CONNECTION;
 
-#ifdef FTP_DEBUG
-  LOG_INFO("FTP Server initialized");
-#endif
+  if (_log == FTPLog::ENABLE)
+  {
+    LOG_INFO("FTP Server initialized");
+  }
 }
 
 void FtpServer::setActiveTimeout(uint32_t timeout)
@@ -234,9 +254,10 @@ bool FtpServer::authenticatePassword()
 
 bool FtpServer::processCommand()
 {
-#ifdef FTP_DEBUG
-  LOG_DEBUG("Comando=%s", _command);
-#endif
+  if (_log == FTPLog::ENABLE)
+  {
+    LOG_DEBUG("Comando=%s", _command);
+  }
   // Access Control Commands
   if (strcmp(_command, "CDUP") == 0)
   {
@@ -325,9 +346,10 @@ bool FtpServer::processCommand()
   else
   {
     _client.println("500 Unknown command");
-#ifdef FTP_DEBUG
-    LOG_WARN("Comando=%s desconhecido", _command);
-#endif
+    if (_log == FTPLog::ENABLE)
+    {
+      LOG_WARN("Comando=%s desconhecido", _command);
+    }
   }
 
   return true;
@@ -517,9 +539,10 @@ void FtpServer::handleMlsdCommand()
   {
     _client.println("550 Invalid path");
     _data.stop();
-#ifdef FTP_DEBUG
-    LOG_DEBUG("Falha no makePath para: %s", path);
-#endif
+    if (_log == FTPLog::ENABLE)
+    {
+      LOG_DEBUG("Falha no makePath para: %s", path);
+    }
     return;
   }
 
@@ -536,9 +559,10 @@ void FtpServer::handleMlsdCommand()
   File file = dir.openNextFile();
   while (file)
   {
-#ifdef FTP_DEBUG
-    LOG_DEBUG("File Name = %s", file.name());
-#endif
+    if (_log == FTPLog::ENABLE)
+    {
+      LOG_DEBUG("File Name = %s", file.name());
+    }
     String line;
     if (file.isDirectory())
     {

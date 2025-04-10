@@ -12,10 +12,8 @@
 
 #include <FS.h>
 #include <LittleFS.h>
-#include <WiFi.h>
-#ifdef FTP_DEBUG
 #include <LogLibrary.h>
-#endif
+#include <WiFi.h>
 
 #define FTP_SERVER_VERSION "1.0.0"
 
@@ -27,13 +25,6 @@
 #define FTP_CWD_SIZE 512
 #define FTP_FIL_SIZE 128
 #define FTP_BUF_SIZE 512
-
-#ifdef FTP_DEBUG
-extern LogLibrary Log;
-#endif
-
-// Debug options
-// #define FTP_DEBUG
 
 // FTP Server States
 enum
@@ -64,10 +55,17 @@ enum
 class FtpServer
 {
 public:
+  enum class FTPLog
+  {
+    DISABLE = 0,
+    ENABLE
+  };
+
   FtpServer();
 
   // Server management
   void begin(const String &username, const String &password);
+  void begin(const String &username, const String &password, FTPLog log);
   bool handleFTP();
 
   // Configuration
@@ -109,6 +107,7 @@ private:
   char _cwd[FTP_CWD_SIZE];
   char _renameFrom[FTP_CWD_SIZE];
   bool _rnfrCmd;
+  FTPLog _log;
 
   // Buffers and timing
   char _cmdLine[FTP_CMD_SIZE];
