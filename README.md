@@ -84,6 +84,9 @@ SEM GARANTIAS OU CONDIÇÕES DE QUALQUER TIPO, expressas ou implícitas.
 Consulte a Licença para o idioma específico que rege as permissões e
 limitações sob a Licença.
 
+Consulte o arquivo [LICENSE](LICENSE) para o texto completo da licença e
+[NOTICE](NOTICE) para informações sobre atribuições e histórico de modificações.
+
 ## 🤝 Contribuição
 Faça um fork do projeto
 

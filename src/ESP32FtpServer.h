@@ -12,7 +12,6 @@
 
 #include <FS.h>
 #include <LittleFS.h>
-// #include <WiFiClient.h>
 #include <WiFi.h>
 #ifdef FTP_DEBUG
 #include <LogLibrary.h>
