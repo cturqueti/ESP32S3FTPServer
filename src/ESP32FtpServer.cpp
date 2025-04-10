@@ -500,6 +500,7 @@ void FtpServer::handleListCommand()
 
 void FtpServer::handleMlsdCommand()
 {
+
   if (!dataConnect())
   {
     _client.println("425 Can't open data connection");
@@ -508,10 +509,17 @@ void FtpServer::handleMlsdCommand()
 
   _client.println("150 Opening ASCII mode data connection for MLSD");
 
-  char path[FTP_CWD_SIZE];
-  if (!makePath(path, sizeof(path), strlen(_parameters) > 0 ? _parameters : nullptr))
+  char path[FTP_CWD_SIZE] = {0};
+
+  const char *paramToUse = (_parameters == nullptr || strlen(_parameters) == 0) ? "." : _parameters;
+
+  if (!makePath(path, sizeof(path), paramToUse))
   {
+    _client.println("550 Invalid path");
     _data.stop();
+#ifdef FTP_DEBUG
+    LOG_DEBUG("Falha no makePath para: %s", path);
+#endif
     return;
   }
 
@@ -524,11 +532,13 @@ void FtpServer::handleMlsdCommand()
       dir.close();
     return;
   }
-
   uint16_t count = 0;
   File file = dir.openNextFile();
   while (file)
   {
+#ifdef FTP_DEBUG
+    LOG_DEBUG("File Name = %s", file.name());
+#endif
     String line;
     if (file.isDirectory())
     {
@@ -1009,7 +1019,7 @@ int8_t FtpServer::readCommand()
 
 void FtpServer::parseCommandLine()
 {
-  _parameters = nullptr;
+  _parameters = "";
 
   // Find space separating command from parameters
   char *spacePos = strchr(_cmdLine, ' ');
